@@ -1,0 +1,6 @@
+@WebApiTo_DoList_HostAddress = http://localhost:5252
+
+GET {{WebApiTo_DoList_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
