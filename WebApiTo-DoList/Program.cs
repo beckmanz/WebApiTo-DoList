@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using WebApiTo_DoList.Data;
+using WebApiTo_DoList.Services.Usuario;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +10,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddScoped<IUsuarioInterface, UsuarioServices>();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
