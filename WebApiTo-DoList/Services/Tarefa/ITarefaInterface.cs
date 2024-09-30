@@ -6,4 +6,5 @@ namespace WebApiTo_DoList.Services.Tarefa;
 public interface ITarefaInterface
 {
     Task<ResponseModel<TarefaModel>> CriarTarefa(CriarTarefaDto criarTarefaDto, int usuarioId);
+    Task<ResponseModel<TarefaModel>> EditarTarefa(EditarTarefaDto editarTarefaDto, int tarefaId);
 }

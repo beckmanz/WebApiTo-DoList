@@ -23,5 +23,12 @@ namespace WebApiTo_DoList.Controllers
             var tarefa = await _tarefaInterface.CriarTarefa(criarTarefaDto, usuarioId);
             return Ok(tarefa);
         }
+
+        [HttpPut("EditarTarefa")]
+        public async Task<ActionResult<ResponseModel<TarefaModel>>> EditarTarefa(EditarTarefaDto editarTarefaDto, int tarefaId)
+        {
+            var tarefa = await _tarefaInterface.EditarTarefa(editarTarefaDto, tarefaId);
+            return Ok(tarefa);
+        }
     }
 }

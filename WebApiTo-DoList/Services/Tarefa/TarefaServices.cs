@@ -47,4 +47,35 @@ public class TarefaServices : ITarefaInterface
             return resposta;
         }
     }
+
+    public async Task<ResponseModel<TarefaModel>> EditarTarefa(EditarTarefaDto editarTarefaDto, int tarefaId)
+    {
+        ResponseModel<TarefaModel> resposta = new ResponseModel<TarefaModel>();
+        try
+        {
+            var tarefa = await _context.Tarefas.Include(t => t.Usuario).FirstOrDefaultAsync(t => t.Id == tarefaId);
+            if (tarefa == null)
+            {
+                resposta.Mensagem = "Tarefa não encontrado, verifique o Id e tente novamente!!";
+                return resposta;
+            }
+
+            tarefa.Name = editarTarefaDto.Name;
+            tarefa.Description = editarTarefaDto.Description;
+            tarefa.Status = editarTarefaDto.Status;
+
+            _context.Update(tarefa);
+            await _context.SaveChangesAsync();
+
+            resposta.Dados = tarefa;
+            resposta.Mensagem = "Tarefa editada com sucesso!";
+            return resposta;
+        }
+        catch (Exception ex)
+        {
+            resposta.Mensagem = ex.Message;
+            resposta.Status = false;
+            return resposta;
+        }
+    }
 }
