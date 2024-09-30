@@ -138,7 +138,7 @@ public class UsuarioServices : IUsuarioInterface
         ResponseModel<UsuarioModel> resposta = new ResponseModel<UsuarioModel>();
         try
         {
-            var usuario = await _context.Usuarios.FirstOrDefaultAsync(u => u.Email == emailUsuario);
+            var usuario = await _context.Usuarios.Include(u => u.Tarefas).FirstOrDefaultAsync(u => u.Email == emailUsuario);
             
             if (usuario == null)
             {
