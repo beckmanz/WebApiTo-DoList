@@ -36,5 +36,11 @@ namespace WebApiTo_DoList.Controllers
             var tarefa = await _tarefaInterface.BuscarTarefa(tarefaId);
             return Ok(tarefa);
         }
+        [HttpDelete("ExcluirTarefa")]
+        public async Task<ActionResult<ResponseModel<TarefaModel>>> ExcluirTarefa(int tarefaId)
+        {
+            var tarefa = await _tarefaInterface.ExcluirTarefa(tarefaId);
+            return Ok(tarefa);
+        }
     }
 }

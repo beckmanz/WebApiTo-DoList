@@ -102,4 +102,31 @@ public class TarefaServices : ITarefaInterface
             return resposta;
         }
     }
+
+    public async Task<ResponseModel<TarefaModel>> ExcluirTarefa(int tarefaId)
+    {
+        ResponseModel<TarefaModel> resposta = new ResponseModel<TarefaModel>();
+        try
+        {
+            var tarefa = await _context.Tarefas.FirstOrDefaultAsync(t => t.Id == tarefaId);
+            if (tarefa == null)
+            {
+                resposta.Mensagem = "Tarefa não encontrado, verifique o Id e tente novamente!!";
+                return resposta;
+            }
+
+            _context.Remove(tarefa);
+            await _context.SaveChangesAsync();
+
+            resposta.Dados = tarefa;
+            resposta.Mensagem = "Tarefa excluída com sucesso!!";
+            return resposta;
+        }
+        catch (Exception ex)
+        {
+            resposta.Mensagem = ex.Message;
+            resposta.Status = false;
+            return resposta;
+        }
+    }
 }
