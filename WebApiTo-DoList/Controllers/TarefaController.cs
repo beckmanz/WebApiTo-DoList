@@ -30,5 +30,11 @@ namespace WebApiTo_DoList.Controllers
             var tarefa = await _tarefaInterface.EditarTarefa(editarTarefaDto, tarefaId);
             return Ok(tarefa);
         }
+        [HttpGet("BuscarTarefa")]
+        public async Task<ActionResult<ResponseModel<TarefaModel>>> BuscarTarefa(int tarefaId)
+        {
+            var tarefa = await _tarefaInterface.BuscarTarefa(tarefaId);
+            return Ok(tarefa);
+        }
     }
 }
