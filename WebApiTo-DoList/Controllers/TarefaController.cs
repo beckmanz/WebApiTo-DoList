@@ -17,26 +17,26 @@ namespace WebApiTo_DoList.Controllers
             _tarefaInterface = tarefaInterface;
         }
         
-        [HttpPost("CriarTarefa")]
+        [HttpPost("Criar")]
         public async Task<ActionResult<ResponseModel<TarefaModel>>> CriarTarefa(CriarTarefaDto criarTarefaDto, int usuarioId)
         {
             var tarefa = await _tarefaInterface.CriarTarefa(criarTarefaDto, usuarioId);
             return Ok(tarefa);
         }
 
-        [HttpPut("EditarTarefa")]
+        [HttpPut("Editar")]
         public async Task<ActionResult<ResponseModel<TarefaModel>>> EditarTarefa(EditarTarefaDto editarTarefaDto, int tarefaId)
         {
             var tarefa = await _tarefaInterface.EditarTarefa(editarTarefaDto, tarefaId);
             return Ok(tarefa);
         }
-        [HttpGet("BuscarTarefa")]
+        [HttpGet("Buscar")]
         public async Task<ActionResult<ResponseModel<TarefaModel>>> BuscarTarefa(int tarefaId)
         {
             var tarefa = await _tarefaInterface.BuscarTarefa(tarefaId);
             return Ok(tarefa);
         }
-        [HttpDelete("ExcluirTarefa")]
+        [HttpDelete("Excluir")]
         public async Task<ActionResult<ResponseModel<TarefaModel>>> ExcluirTarefa(int tarefaId)
         {
             var tarefa = await _tarefaInterface.ExcluirTarefa(tarefaId);

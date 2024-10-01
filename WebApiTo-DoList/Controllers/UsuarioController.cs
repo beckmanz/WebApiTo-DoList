@@ -17,33 +17,33 @@ namespace WebApiTo_DoList.Controllers
             _usuarioInterface = usuarioInterface;
         }
 
-        [HttpPost("CriaUsuario")]
+        [HttpPost("Criar")]
         public async Task<ActionResult<ResponseModel<List<UsuarioModel>>>> CriarUsuario(CriarUsuarioDto criarUsuarioDto)
         {
             var usuarios = await _usuarioInterface.CriarUsuario(criarUsuarioDto);
             return Ok(usuarios);
         }
-        [HttpPut("EditarUsuario")]
+        [HttpPut("Editar")]
         public async Task<ActionResult<ResponseModel<List<UsuarioModel>>>> EditarUsuario(EditarUsuarioDto editarUsuarioDto, string emailUsuario, string passwordUsuario)
         {
             var usuario = await _usuarioInterface.EditarUsuario(editarUsuarioDto, emailUsuario, passwordUsuario);
             return Ok(usuario);
         }
 
-        [HttpGet("BuscarUsuario")]
+        [HttpGet("Buscar")]
         public async Task<ActionResult<ResponseModel<UsuarioModel>>> BuscarUsuario(int idUsuario)
         {
             var usuario = await _usuarioInterface.BuscarUsuario(idUsuario);
             return Ok(usuario);
         }
 
-        [HttpGet("LoginUsuario")]
+        [HttpGet("Login")]
         public async Task<ActionResult<ResponseModel<UsuarioModel>>> LoginUsuario(string emailUsuario, string passwordUsuario)
         {
             var usuario = await _usuarioInterface.LoginUsuario(emailUsuario, passwordUsuario);
             return Ok(usuario);
         }
-        [HttpDelete("ExcluirUsuario")]
+        [HttpDelete("Excluir")]
         public async Task<ActionResult<ResponseModel<UsuarioModel>>> ExcluirUsuario(string emailUsuario, string passwordUsuario)
         {
             var usuario = await _usuarioInterface.ExcluirUsuario(emailUsuario, passwordUsuario);
