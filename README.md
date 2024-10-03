@@ -35,12 +35,12 @@ Certifique-se de ter as seguintes ferramentas instaladas:
 1. Clone este repositório:
 
    ```bash
-   git clone https://github.com/seu-usuario/todolist-api.git
+   git clone https://github.com/beckmanz/WebApiTo-DoList.git
 
 2. Entre no diretório do projeto:
 
 ```bash
-cd todolist-api
+cd WebApiTo-DoList
 ```
 3. Restaure as dependências
 ```bash
